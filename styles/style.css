@@ -1,11 +1,11 @@
 * {
 
-    font-family: 'Proza Libre'!important ;
-    
+    font-family: 'Proza Libre' !important;
+
 }
 
 #nav_bar {
-    background-image: url("/images/pollack.jpg") !important;
+    background-image: url("../images/pollack.jpg") !important;
     background-repeat: repeat;
 }
 
@@ -14,7 +14,7 @@
 }
 
 #title {
-    
+
     font-size: 45px;
 }
 
@@ -44,7 +44,7 @@ a:visited {
 /* mouse over link */
 a:hover {
     text-decoration: none;
-     color: red;
+    color: red;
 }
 
 /* selected link */
@@ -54,28 +54,30 @@ a:active {
 
 }
 
-table{
-    border:1px solid black;
+table {
+    border: 1px solid black;
     text-align: center;
-   width: 100%;
+    width: 100%;
 }
-h1{
+
+h1 {
     font-family: 'Romanesco', cursive !important;
-    text-align: center  ;
-}
-
-h2{
-    font-family: 'Romanesco', cursive !important;
-    text-align: center  ;
-
-
-}
-#logo{
     text-align: center;
 }
 
-#main_logo{
-    padding-top:15px;
+h2 {
+    font-family: 'Romanesco', cursive !important;
+    text-align: center;
+
+
+}
+
+#logo {
+    text-align: center;
+}
+
+#main_logo {
+    padding-top: 15px;
 }
 
 table.dataTable thead .sorting:after,
@@ -88,10 +90,10 @@ table.dataTable thead .sorting_desc:after,
 table.dataTable thead .sorting_desc:before,
 table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
-bottom: .5em;
+    bottom: .5em;
 }
 
-#center{
+#center {
     text-align: center;
     padding-bottom: 2%;
 }
@@ -104,12 +106,40 @@ bottom: .5em;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
-  }
+}
 
-  button{
-    background-color: Transparent !important;
-  }
+button {
+    /* background-color: Transparent !important; */
+    opacity: 70% !important;
+}
 
-  #senate-data{
-      margin-right: 10%;
+#spinner{
+    visibility: hidden;
+    width: 80px;
+    height: 80px;
+  
+    border: 2px solid #f3f3f3;
+    border-top:3px solid #f25a41;
+    border-radius: 100%;
+  
+    /* position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;*/
+    margin: auto; 
+  
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  #spinner.show {
+    visibility: visible;
   }

@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lato|Proza+Libre&display=swap" rel="stylesheet">
-  <link rel="icon" href="./images/architecture-and-city.png">
+  <link rel="icon" href="../images/architecture-and-city.png">
   <link rel="stylesheet" type="text/css" href="../styles/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,59 +18,59 @@
 <body>
 
   <!-- Navigation -->
-   <!-- Navigation -->
-   <nav id="nav_bar" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <!-- Navigation -->
+  <nav id="nav_bar" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
     <div class="container">
-        <a href="../index.html" class="navbar-brand">
-            <!-- <img src="./images/propublicwhite.png" width="50" alt="" class="d-inline-block align-middle mr-2"> -->
-            <!-- Logo Image -->
-            <!-- Logo Text -->
-            <span id="title">ProPublica</span>
-        </a>
+      <a href="../index.html" class="navbar-brand">
+        <!-- <img src="./images/propublicwhite.png" width="50" alt="" class="d-inline-block align-middle mr-2"> -->
+        <!-- Logo Image -->
+        <!-- Logo Text -->
+        <span id="title">ProPublica</span>
+      </a>
 
-        <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-            class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
 
 
-        <div id="navbarSupportedContent" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        113 Congress
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="./senate.html">Senate</a>
-                        <a class="dropdown-item" href="">House</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Attendence
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../attendence/senate.html">Senate</a>
-                        <a class="dropdown-item" href="../attendence/house.html">House</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Loyalty
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
-                        <a class="dropdown-item" href="../loyalty/house.html">House</a>
-                    </div>
-                </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              113 Congress
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="./senate.html">Senate</a>
+              <a class="dropdown-item active" href="#">House</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Attendence
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="../attendence/senate.html">Senate</a>
+              <a class="dropdown-item" href="../attendence/house.html">House</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Loyalty
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
+              <a class="dropdown-item" href="../loyalty/house.html">House</a>
+            </div>
+          </div>
 
-            </ul>
-        </div>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
 
   <!-- CONTENT -->
@@ -89,25 +89,43 @@
     </p>
     <div id="center" class="checkbox text-center">
       <label for="democrat">
-          <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="filterFunction()"/>
-          Democrats
+        <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="checker(data)" />
+        Democrats
       </label>
       <label for="republican">
-          <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="filterFunction()" />
-          Republicans
+        <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="checker(data)" />
+        Republicans
       </label>
       <label for="independent">
-          <input display = "none" class='radio_check' id="independent" type="checkbox" value="Independent" onclick="filterFunction()"/>
-          Independents
+        <input display="none" class='radio_check' id="independent" type="checkbox" value="Independent"
+          onclick="checker(data)" />
+        Independents
       </label>
 
+    </div>
+
+    <select id="state_select" class='form-control' onchange="checker(data)"></select>
+    
+
+    <table class="table-striped table-light table-bordered table-hover" data-toggle="table" id="senate-data">
+     
+      <thead id="header">
+        <tr id="headerRow">
+          <th>Name</th>
+          <th>Pary</th>
+          <th>State</th>
+          <th>Senority</th>
+          <th>Party Line Votes</th>
+        </tr>
+      </thead>
+
+      <tbody id='tbody' class="table-hover">
+      
+      </tbody>
+
+    </table>
+
   </div>
-
-  <select id="state_select" class='form-control' onchange="filterFunction()"></select>
-
-  <table class="table-striped table-light table-bordered table-hover" data-toggle="table" id="senate-data"></table>
-
-</div>
 
   </div>
 
@@ -157,7 +175,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-  <script src="../data/pro-congress-113-house.js"></script>
   <script src="./congress.js"></script>
 
 </body>
