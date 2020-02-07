@@ -44,7 +44,7 @@
                             113 Congress
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Senate</a>
+                            <a class="dropdown-item active" href="#">Senate</a>
                             <a class="dropdown-item" href="./house.html">House</a>
                         </div>
                     </div>
@@ -78,34 +78,49 @@
     <div class="jumbotron">
         <h1>Senate Data</h1>
     </div>
-        <p>
-            First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S.
-            Constitution. Each state is represented by two senators, regardless of population, who serve staggered
-            six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to
-            treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet
-            secretaries, federal judges, other federal executive officials, military officers, regulatory officials,
-            ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the
-            House.
-        </p>
-        <div id="center" class="checkbox text-center">
-            <label for="democrat">
-                <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="filterFunction()"/>
-                Democrats
-            </label>
-            <label for="republican">
-                <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="filterFunction()" />
-                Republicans
-            </label>
-            <label for="independent">
-                <input class='radio_check' id="independent" type="checkbox" value="Independent" onclick="filterFunction()"/>
-                Independents
-            </label>
+    <p>
+        First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S.
+        Constitution. Each state is represented by two senators, regardless of population, who serve staggered
+        six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to
+        treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet
+        secretaries, federal judges, other federal executive officials, military officers, regulatory officials,
+        ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the
+        House.
+    </p>
+    <div id="center" class="checkbox text-center">
+        <label for="democrat">
+            <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="checker(data)" />
+            Democrats
+        </label>
+        <label for="republican">
+            <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="checker(data)" />
+            Republicans
+        </label>
+        <label for="independent">
+            <input class='radio_check' id="independent" type="checkbox" value="Independent"
+                onclick="checker(data)" />
+            Independents
+        </label>
 
-        </div>
+    </div>
 
-        <select id="state_select" class='form-control' onchange="filterFunction()"></select>
+    <select id="state_select" class='form-control' onchange="checker(data)"></select>
 
-        <table class="table-striped table-light table-bordered table-hover" data-toggle="table" id="senate-data"></table>
+    <table class="table-striped table-light table-bordered table-hover" data-toggle="table" id="senate-data">
+        <thead id="header">
+            <tr id="headerRow">
+                <th>Name</th>
+                <th>Pary</th>
+                <th>State</th>
+                <th>Senority</th>
+                <th>Party Line Votes</th>
+            </tr>
+        </thead>
+
+        <tbody id='tbody' class="table-hover">
+
+        </tbody>
+    </table>
 
     </div>
 
@@ -135,7 +150,7 @@
     </footer>
 
     <!-- Bootstrap and jQuery -->
-    
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
@@ -146,8 +161,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-    <script src="../data/pro-congress-113-senate.js"></script>
     <script src="./congress.js"></script>
+
+
 </body>
+
 
 </html>

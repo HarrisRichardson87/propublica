@@ -1,77 +1,84 @@
-//fuctions//
-let stacked = [];
-//main//
-for (let i = 0; i < data.results[0].members.length; i++) {
-  stacked.push(data.results[0].members[i])
+// let data;
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
+const senateUrl = "http://api.propublica.org/congress/v1/113/senate/members.json";
+const houseUrl = "http://api.propublica.org/congress/v1/113/house/members.json";
+let url;
+
+if (location.href.includes("senate")) {
+  url = senateUrl
+} else {
+  url = houseUrl
 }
 
 function filterFunction() {
-  console.log('run')
-  const democratListen = document.getElementById("democrat");
-  const republicanListen = document.getElementById("republican");
-  const independentListen = document.getElementById("independent");
+  fetch(proxyurl + url, {
+    method: "GET",
+    headers: {
+      'X-API-Key': 'wpXHjG2BpCVmtW4PyIQZXxmhf97lTRwdA5NtC3dh'
+    }
+  }).then(function (res) {
+    if (res.ok) {
+      return res.json();
+    }
+    throw new Error(res.statusText);
+
+  }).then(function (json) {
+    let data = json;
+    stater(data.results[0].members)
+    return data;
+
+  }).then(function (data) {
+    checker(data);
+
+  }).catch(function (error) {
+    console.log("request failed:" + error.message);
+  });
+}
+filterFunction();
+
+
+
+function checker(data) {
+  let democratListen = document.getElementById("democrat");
+  let republicanListen = document.getElementById("republican");
+  let independentListen = document.getElementById("independent");
   let stateSelect = document.getElementById('state_select').value;
-  console.log(stateSelect)
-  const result = stacked.filter((member) => {
-    if(stateSelect == "All States"){
-    if(democratListen.checked && member.party == "D") return member;
-    if(republicanListen.checked && member.party =='R') return member;
-    if(independentListen.checked && member.party == 'I') return member;
-    if(!independentListen.checked && !democratListen.checked && !republicanListen.checked) return member;
-    }else{
-      if(member.state == stateSelect && !independentListen.checked && !democratListen.checked && !republicanListen.checked) return member;
-      if(democratListen.checked && member.party == "D" && member.state == stateSelect) return member;
-      if(republicanListen.checked && member.party =='R' && member.state == stateSelect) return member;
-      if(independentListen.checked && member.party == 'I' && member.state == stateSelect) return member;
+  let result = data.results[0].members.filter((member) => {
+    if (stateSelect == "All States") {
+      if (democratListen.checked && member.party == "D") return member;
+      if (republicanListen.checked && member.party == 'R') return member;
+      if (independentListen.checked && member.party == 'I') return member;
+      if (!independentListen.checked && !democratListen.checked && !republicanListen.checked) return member;
+    } else {
+      if (member.state == stateSelect && !independentListen.checked && !democratListen.checked && !republicanListen.checked) return member;
+      if (democratListen.checked && member.party == "D" && member.state == stateSelect) return member;
+      if (republicanListen.checked && member.party == 'R' && member.state == stateSelect) return member;
+      if (independentListen.checked && member.party == 'I' && member.state == stateSelect) return member;
     }
   })
-pageLoader(result)
+  pageLoader(result)
 }
 
-let stateBox = [];
+const stater = (stacked) => {
+  let stateBox = [];
 
-for (let i = 0; i < stacked.length; i++) {
-  if (stateBox.includes(stacked[i].state) === false) {
-    stateBox.push(stacked[i].state);
+  for (let i = 0; i < stacked.length; i++) {
+    if (stateBox.includes(stacked[i].state) === false) {
+      stateBox.push(stacked[i].state);
+    }
+  }
+  let sortBox = stateBox.sort();
+  stateBox.unshift('All States')
+  for (let i = 0; i < sortBox.length; i++) {
+    let states = document.createElement("OPTION");
+    let textname = document.createTextNode(`${sortBox[i]}`); // Create a text node
+    states.appendChild(textname)
+    states.setAttribute("class", 'state')
+    states.setAttribute('value', `${sortBox[i]}`)
+    states.setAttribute('id', `${sortBox[i]}`)
+    document.getElementById("state_select").appendChild(states);
   }
 }
-let sortBox = stateBox.sort();
-stateBox.unshift('All States')
-for (let i = 0; i < sortBox.length; i++) {
-  let states = document.createElement("OPTION");
-  let textname = document.createTextNode(`${sortBox[i]}`); // Create a text node
-  states.appendChild(textname)
-  states.setAttribute("class", 'state')
-  states.setAttribute('value', `${sortBox[i]}`)
-  states.setAttribute('id', `${sortBox[i]}`)
-  document.getElementById("state_select").appendChild(states);
-}
-
-//Initial Header Load//
-
-const headers = ['Name', 'Party', 'State', 'Senority', 'Party Line Votes']
-
-let nodeTHeadrow = document.createElement("thead");
-nodeTHeadrow.setAttribute("id", 'header')
-document.getElementById("senate-data").appendChild(nodeTHeadrow);
-
-let nodeHeaderRow = document.createElement("TR");
-nodeHeaderRow.setAttribute("id", 'headerRow')
-document.getElementById("header").appendChild(nodeHeaderRow);
-
-for (let i = 0; i < headers.length; i++) {
-  let node = document.createElement("TH");
-  let textnode = document.createTextNode(`${headers[i]}`); // Create a text node
-  node.appendChild(textnode);
-  node.setAttribute("scope", 'col')
-  document.getElementById("headerRow").appendChild(node);
-}
-
-let nodeTBody = document.createElement("tbody");
-nodeTBody.setAttribute("id", 'tbody');
-nodeTBody.setAttribute('class', 'table-hover');
-document.getElementById("senate-data").appendChild(nodeTBody);
-
 //TBODY Page Loader//
 
 const pageLoader = (stacked) => {
@@ -79,7 +86,6 @@ const pageLoader = (stacked) => {
   Table.innerHTML = "";
 
   for (let i = 0; i < stacked.length; i++) {
-
     let row = document.createElement('TR'); // Create row
     row.setAttribute('scope', 'row')
     row.setAttribute("class", `${stacked[i].state}`)
@@ -119,21 +125,3 @@ const pageLoader = (stacked) => {
 
   }
 }
-
-pageLoader(stacked);
-
-// $('#senate-data').bootstrapTable({
-//   url: '../data/pro-congress-113-senate.js',
-//   pagination: true,
-//   search: true,
-//   columns: [{
-//     field: 'id',
-//     title: 'Item ID'
-//   }, {
-//     field: 'name',
-//     title: 'Item Name'
-//   }, {
-//     field: 'price',
-//     title: 'Item Price'
-//   }]
-// })
