@@ -86,26 +86,65 @@
             </div>
             <div class="col">
                 <h2>
-                    House at a Glace
+                    Senate at a Glace
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="glance"></table>
+                <table class="table-striped table-light table-bordered table-hover" id="glance">
+                    <th scope="col">Name</th>
+                    <th scope="col"># of Reps</th>
+                    <th scope="col">% of Votes w/Party</th>
+        
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rowData">
+                            <th scope="row">{{ item.name }}</th>
+                            <td>{{ item.reps }}</td>
+                            <td>{{ item.percent }}</td>
+        
+                        </tr>
+                </table>
             </div>
         </div>
+
         <div class="row">
             <div class="col">
-                <h2>Least Engaged(Bottom 10% Attendence)</h2>
-                <table class="table-striped table-light table-bordered table-hover" id="one"></table>
+                <h2>Worst Attendencel(Bottom 10%)</h2>
+                <table class="table-striped table-light table-bordered table-hover" id="one">
+                    <th scope="col">Name</th>
+                    <th scope="col">Number of Votes</th>
+                    <th scope="col">Missed Votes</th>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rowData">
+                            <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
+                            <td>{{ item.total_votes }}</td>
+                            <td>{{ item.missed_votes_pct }}</td>
+
+                        </tr>
+                </table>
 
             </div>
             <div class="col">
                 <h2>
-                    Most Engaged (Top 10% Attendence)
-                </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="two"></table>
+                    <h2>
+                        Best Attendence (Top 10%)
+                    </h2>
+                    <table class="table-striped table-light table-bordered table-hover" id="two">
+                        <th scope="col">Name</th>
+                        <th scope="col">Total Votes</th>
+                        <th scope="col">Missed Votes</th>
+    
+                        </thead>
+                        <tbody>
+                            <tr v-for="item in rowDataTwo">
+                                <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
+                                <td>{{ item.total_votes }}</td>
+                                <td>{{ item.missed_votes_pct }}</td>
+    
+                            </tr>
+                    </table>
             </div>
         </div>
-
-
 
 
 
@@ -149,6 +188,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
 
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
         <script src="./attendence.js"></script>
 

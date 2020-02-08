@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <title>ProPublica</title>
 
@@ -73,7 +74,6 @@
 
 
     <!-- CONTENT -->
-
     <div class="container">
         <div class="row">
             <div class="col">
@@ -85,31 +85,65 @@
                 hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas
             </div>
             <div class="col">
+
                 <h2>
                     House at a Glace
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="glance"></table>
+                <table class="table-striped table-light table-bordered table-hover" id="glance">
+                    <th scope="col">Name</th>
+                    <th scope="col"># of Reps</th>
+                    <th scope="col">% of Votes w/Party</th>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rowData">
+                            <th scope="row">{{ item.name }}</th>
+                            <td>{{ item.reps }}</td>
+                            <td>{{ item.percent }}</td>
+
+                        </tr>
+                </table>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h2>Least Loyal(Bottom 10% Attendence)</h2>
-                <table class="table-striped table-light table-bordered table-hover" id="one"></table>
+                <h2>Least Loyal(Bottom 10% Loyalty)</h2>
+                <table class="table-striped table-light table-bordered table-hover" id="one">
+                    <th scope="col">Name</th>
+                    <th scope="col"># of Party Votes</th>
+                    <th scope="col">% of Votes w/Party</th>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rowData">
+                            <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
+                            <td>{{ item.total_votes }}</td>
+                            <td>{{ item.votes_with_party_pct }}</td>
+
+                        </tr>
+                </table>
 
             </div>
             <div class="col">
                 <h2>
-                    Most Loyal (Top 10% Attendence)
+                    Most Loyal (Top 10% Loyalty)
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="two"></table>
+                <table class="table-striped table-light table-bordered table-hover" id="two">
+                    <th scope="col">Name</th>
+                    <th scope="col"># of Party Votes</th>
+                    <th scope="col">% of Votes w/Party</th>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in rowData">
+                            <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
+                            <td>{{ item.total_votes }}</td>
+                            <td>{{ item.votes_with_party_pct }}</td>
+
+                        </tr>
+                </table>
             </div>
         </div>
-
-
-
-
-
-
         <!-- Footer -->
         <footer class="page-footer font-small white shadow-sm">
             <div class="footer-copyright text-center py-1">
@@ -133,12 +167,11 @@
             <!-- Copyright -->
             <div class="footer-copyright text-center py-1">
                 <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-
-
             </div>
         </footer>
 
         <!-- Bootstrap and jQuery -->
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
