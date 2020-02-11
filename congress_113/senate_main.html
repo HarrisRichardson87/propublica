@@ -45,7 +45,7 @@
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item active" href="#">Senate</a>
-                            <a class="dropdown-item" href="./house.html">House</a>
+                            <a class="dropdown-item" href="./house_main.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -54,8 +54,8 @@
                             Attendence
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../attendence/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../attendence/house.html">House</a>
+                            <a class="dropdown-item" href="../attendence/senate_attendence.html">Senate</a>
+                            <a class="dropdown-item" href="../attendence/house_attendence.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -64,8 +64,8 @@
                             Loyalty
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../loyalty/house.html">House</a>
+                            <a class="dropdown-item" href="../loyalty/senate_loyalty.html">Senate</a>
+                            <a class="dropdown-item" href="../loyalty/house_loyalty.html">House</a>
                         </div>
                     </div>
 
@@ -75,6 +75,7 @@
     </nav>
 
     <!-- CONTENT -->
+    <div id = "app">
     <div class="jumbotron">
         <h1>Senate Data</h1>
     </div>
@@ -89,24 +90,26 @@
     </p>
     <div id="center" class="checkbox text-center">
         <label for="democrat">
-            <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="checker(data)">
+            <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="app.check(data)">
             Democrats
         </label>
         <label for="republican">
-            <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="checker(data)" />
+            <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="app.check(data)" />
             Republicans
         </label>
         <label for="independent">
-            <input class='radio_check' id="independent" type="checkbox" value="Independent" onclick="checker(data)" />
+            <input class='radio_check' id="independent" type="checkbox" value="Independent" onclick="app.check(data)" />
             Independents
         </label>
 
     </div>
 
-    <select id="state_select" class='form-control' onchange="checker(data)"></select>
-
-
-    <table class="table-striped table-light table-bordered table-hover" id="two">
+    
+    <select id="state_select"  class='form-control' onchange="app.check(data)">
+       <option v-for= 'item in stater'>{{ item }}</option>
+    </select>
+    <table class="table-striped table-light table-bordered table-hover">
+        <div id="spinner"></div> 
         <th>Name</th>
         <th>Party</th>
         <th>State</th>
@@ -126,7 +129,7 @@
     </table>
 
     </div>
-
+</div>
     <!-- Footer -->
     <footer class="page-footer font-small white shadow-sm">
         <div class="footer-copyright text-center py-1">

@@ -61,12 +61,12 @@ table {
 }
 
 h1 {
-    font-family: 'Romanesco', cursive !important;
+    
     text-align: center;
 }
 
 h2 {
-    font-family: 'Romanesco', cursive !important;
+   
     text-align: center;
 
 
@@ -112,7 +112,6 @@ button {
     /* background-color: Transparent !important; */
     opacity: 70% !important;
 }
-
 #spinner{
     visibility: hidden;
     width: 80px;
@@ -122,12 +121,12 @@ button {
     border-top:3px solid #f25a41;
     border-radius: 100%;
   
-    /* position: absolute;
+    position: absolute;
     top:0;
     bottom:0;
     left:0;
-    right: 0;*/
-    margin: auto; 
+    right: 0;
+    margin: auto;
   
     animation: spin 1s infinite linear;
   }
