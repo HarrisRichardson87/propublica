@@ -41,8 +41,8 @@
                             113 Congress
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../congress_113/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../congress_113/house.html">House</a>
+                            <a class="dropdown-item" href="../congress_113/senate_main.html">Senate</a>
+                            <a class="dropdown-item" href="../congress_113/house_main.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -51,7 +51,7 @@
                             Attendence
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate.html">Senate</a>
+                            <a class="dropdown-item" href="./senate_attendence.html">Senate</a>
                             <a class="dropdown-item active" href="#">House</a>
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                             Loyalty
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../loyalty/house.html">House</a>
+                            <a class="dropdown-item" href="../loyalty/senate_loyalty.html">Senate</a>
+                            <a class="dropdown-item" href="../loyalty/house_loyalty.html">House</a>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
 
     <!-- CONTENT -->
 
-    <div class="container">
+    <div class="container" id="app">
         <div class="row">
             <div class="col">
                 <h1>Attendence</h1>
@@ -88,14 +88,14 @@
                 <h2>
                     Senate at a Glace
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="glance">
+                <table class="table-striped table-light table-bordered table-hover" value="glanceObject">
                     <th scope="col">Name</th>
                     <th scope="col"># of Reps</th>
                     <th scope="col">% of Votes w/Party</th>
         
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in glanceObject">
                             <th scope="row">{{ item.name }}</th>
                             <td>{{ item.reps }}</td>
                             <td>{{ item.percent }}</td>
@@ -108,14 +108,14 @@
         <div class="row">
             <div class="col">
                 <h2>Worst Attendencel(Bottom 10%)</h2>
-                <table class="table-striped table-light table-bordered table-hover" id="one">
+                <table class="table-striped table-light table-bordered table-hover" value="worstAttendence">
                     <th scope="col">Name</th>
                     <th scope="col">Number of Votes</th>
                     <th scope="col">Missed Votes</th>
 
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in worstAttendence">
                             <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
                             <td>{{ item.total_votes }}</td>
                             <td>{{ item.missed_votes_pct }}</td>
@@ -129,14 +129,14 @@
                     <h2>
                         Best Attendence (Top 10%)
                     </h2>
-                    <table class="table-striped table-light table-bordered table-hover" id="two">
+                    <table class="table-striped table-light table-bordered table-hover" value="bestAttendence">
                         <th scope="col">Name</th>
                         <th scope="col">Total Votes</th>
                         <th scope="col">Missed Votes</th>
     
                         </thead>
                         <tbody>
-                            <tr v-for="item in rowDataTwo">
+                            <tr v-for="item in bestAttendence">
                                 <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
                                 <td>{{ item.total_votes }}</td>
                                 <td>{{ item.missed_votes_pct }}</td>

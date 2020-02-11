@@ -19,7 +19,7 @@
     <!-- Navigation -->
     <nav id="nav_bar" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <a href="./index.html" class="navbar-brand">
+            <a href="../index.html" class="navbar-brand">
                 <!-- <img src="./images/propublicwhite.png" width="50" alt="" class="d-inline-block align-middle mr-2"> -->
                 <!-- Logo Image -->
                 <!-- Logo Text -->
@@ -40,8 +40,8 @@
                             113 Congress
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../congress_113/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../congress_113/house.html">House</a>
+                            <a class="dropdown-item" href="../senate_main.html">Senate</a>
+                            <a class="dropdown-item" href="../house_main.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -50,8 +50,8 @@
                             Attendence
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item active" href="#">Senate</a>
-                            <a class="dropdown-item" href="./house.html">House</a>
+                            <a class="dropdown-item" href="../attendence/senate_attendence.html">Senate</a>
+                            <a class="dropdown-item" href="../attendence/house_attendence.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -60,8 +60,8 @@
                             Loyalty
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../loyalty/house.html">House</a>
+                            <a class="dropdown-item" href="./senate_loyalty.html">Senate</a>
+                            <a class="dropdown-item active" href="#">House</a>
                         </div>
                     </div>
 
@@ -72,11 +72,10 @@
 
 
     <!-- CONTENT -->
-
-    <div class="container">
+    <div class="container" id='app'>
         <div class="row">
             <div class="col">
-                <h1>Attendence</h1>
+                <h1>Loyalty</h1>
                 Es un hecho establecido hace demasiado tiempo que un
                 lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.
                 El punto de usar Lorem Ipsum es que tiene una distribución más o menos normal de las letras,
@@ -84,75 +83,76 @@
                 hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y editores de páginas
             </div>
             <div class="col">
+
                 <h2>
-                    Senate at a Glace
+                    House at a Glace
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="glance">
+                <table class="table-striped table-light table-bordered table-hover" value="glanceObject">
+                    <thead>
                     <th scope="col">Name</th>
                     <th scope="col"># of Reps</th>
                     <th scope="col">% of Votes w/Party</th>
-        
+
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in glanceObject">
                             <th scope="row">{{ item.name }}</th>
                             <td>{{ item.reps }}</td>
                             <td>{{ item.percent }}</td>
-        
                         </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
-
         <div class="row">
             <div class="col">
-                <h2>Worst Attendencel(Bottom 10%)</h2>
-                <table class="table-striped table-light table-bordered table-hover" id="one">
+                <h2>Least Loyal(Bottom 10% Loyalty)</h2>
+                <table class="table-striped table-light table-bordered table-hover" value="leastLoyal">
+                    <thead>
                     <th scope="col">Name</th>
-                    <th scope="col">Number of Votes</th>
-                    <th scope="col">Missed Votes</th>
-
+                    <th scope="col"># of Party Votes</th>
+                    <th scope="col">% of Votes w/Party</th>
                     </thead>
+
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in leastLoyal">
                             <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
                             <td>{{ item.total_votes }}</td>
-                            <td>{{ item.missed_votes_pct }}</td>
-
+                            <td>{{ item.votes_with_party_pct }}</td>
                         </tr>
+                    </tbody>
                 </table>
 
             </div>
             <div class="col">
                 <h2>
-                    <h2>
-                        Best Attendence (Top 10%)
-                    </h2>
-                    <table class="table-striped table-light table-bordered table-hover" id="two">
-                        <th scope="col">Name</th>
-                        <th scope="col">Total Votes</th>
-                        <th scope="col">Missed Votes</th>
-    
-                        </thead>
-                        <tbody>
-                            <tr v-for="item in rowDataTwo">
-                                <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
-                                <td>{{ item.total_votes }}</td>
-                                <td>{{ item.missed_votes_pct }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    Most Loyal (Top 10% Loyalty)
+                </h2>
+                <table class="table-striped table-light table-bordered table-hover" value="sorted">
+                    <thead>
+                    <th scope="col">Name</th>
+                    <th scope="col"># of Party Votes</th>
+                    <th scope="col">% of Votes w/Party</th>
+
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in sorted">
+                            <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
+                            <td>{{ item.total_votes }}</td>
+                            <td>{{ item.votes_with_party_pct }}</td>
+
+                        </tr>
+                </table>
             </div>
         </div>
-
         <!-- Footer -->
         <footer class="page-footer font-small white shadow-sm">
             <div class="footer-copyright text-center py-1">
-                Linkedin
-                <a class="li-ic">
-                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                </a>
-
+                <!-- Linkedin
+            <a class="li-ic">
+                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+            </a>
+            Facebook- -->
                 <!-- <a class="li-ic">
                 <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
             </a> -->
@@ -160,7 +160,8 @@
                 <a class="li-ic">
                     <i>
                         <a href="mailto: harris.richardson87@gmail.com"><img src="../images/email-marketing.png"
-                                height="40">Website Designed by Harris Richardson</a>
+                                height="40">Website
+                            Designed by Harris Richardson</a>
                     </i>
                 </a>
             </div>
@@ -171,6 +172,7 @@
         </footer>
 
         <!-- Bootstrap and jQuery -->
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
@@ -181,8 +183,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-        <script src="./attendence.js"></script>
+        <script src="./loyalty.js"></script>
 
 </body>
 

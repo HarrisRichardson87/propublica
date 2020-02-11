@@ -10,10 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+  
     <title>ProPublica</title>
-
 </head>
 
 <body>
@@ -42,8 +40,8 @@
                             113 Congress
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate.html">Senate</a>
-                            <a class="dropdown-item" href="./house.html">House</a>
+                            <a class="dropdown-item" href="../congress_113/senate_main.html">Senate</a>
+                            <a class="dropdown-item" href="../congress_113/house_main.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -52,8 +50,8 @@
                             Attendence
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="../attendence/senate.html">Senate</a>
-                            <a class="dropdown-item" href="../attendence/house.html">House</a>
+                            <a class="dropdown-item" href="../attendence/senate_attendence.html">Senate</a>
+                            <a class="dropdown-item" href="../attendence/house_attendence.html">House</a>
                         </div>
                     </div>
                     <div class="dropdown">
@@ -62,8 +60,8 @@
                             Loyalty
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="./senate.html">Senate</a>
-                            <a class="dropdown-item active" href="#">House</a>
+                            <a class="dropdown-item active" href="">Senate</a>
+                            <a class="dropdown-item" href="./house_loyalty.html">House</a>
                         </div>
                     </div>
 
@@ -74,7 +72,8 @@
 
 
     <!-- CONTENT -->
-    <div class="container">
+
+    <div class="container" id="app">
         <div class="row">
             <div class="col">
                 <h1>Loyalty</h1>
@@ -87,16 +86,16 @@
             <div class="col">
 
                 <h2>
-                    House at a Glace
+                    Senate at a Glace
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="glance">
+                <table class="table-striped table-light table-bordered table-hover" value="glanceObject">
                     <th scope="col">Name</th>
                     <th scope="col"># of Reps</th>
                     <th scope="col">% of Votes w/Party</th>
 
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in glanceObject">
                             <th scope="row">{{ item.name }}</th>
                             <td>{{ item.reps }}</td>
                             <td>{{ item.percent }}</td>
@@ -108,19 +107,21 @@
         <div class="row">
             <div class="col">
                 <h2>Least Loyal(Bottom 10% Loyalty)</h2>
-                <table class="table-striped table-light table-bordered table-hover" id="one">
+                <table class="table-striped table-light table-bordered table-hover" value="leastLoyal">
+                    <thead>
                     <th scope="col">Name</th>
                     <th scope="col"># of Party Votes</th>
                     <th scope="col">% of Votes w/Party</th>
 
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in leastLoyal">
                             <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
                             <td>{{ item.total_votes }}</td>
                             <td>{{ item.votes_with_party_pct }}</td>
 
                         </tr>
+                    </tbody>
                 </table>
 
             </div>
@@ -128,14 +129,14 @@
                 <h2>
                     Most Loyal (Top 10% Loyalty)
                 </h2>
-                <table class="table-striped table-light table-bordered table-hover" id="two">
+                <table class="table-striped table-light table-bordered table-hover" value="sorted">
                     <th scope="col">Name</th>
                     <th scope="col"># of Party Votes</th>
                     <th scope="col">% of Votes w/Party</th>
 
                     </thead>
                     <tbody>
-                        <tr v-for="item in rowData">
+                        <tr v-for="item in sorted">
                             <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
                             <td>{{ item.total_votes }}</td>
                             <td>{{ item.votes_with_party_pct }}</td>
@@ -144,23 +145,25 @@
                 </table>
             </div>
         </div>
+    </div>
+
+
         <!-- Footer -->
         <footer class="page-footer font-small white shadow-sm">
             <div class="footer-copyright text-center py-1">
-                <!-- Linkedin
-            <a class="li-ic">
-                <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            Facebook- -->
+                Linkedin
+                <a class="li-ic">
+                    <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                </a>
+
                 <!-- <a class="li-ic">
                 <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
             </a> -->
                 <!--Instagram-->
                 <a class="li-ic">
                     <i>
-                        <a href="mailto: harris.richardson87@gmail.com"><img src="./images/email-marketing.png"
-                                height="40">Website
-                            Designed by Harris Richardson</a>
+                        <a href="mailto: harris.richardson87@gmail.com"><img src="../images/email-marketing.png"
+                                height="40">Website Designed by Harris Richardson</a>
                     </i>
                 </a>
             </div>
@@ -171,7 +174,7 @@
         </footer>
 
         <!-- Bootstrap and jQuery -->
-
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
@@ -181,9 +184,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
-
-        <script src="./loyalty.js"></script>
-
+        <script   src="./loyalty.js"></script>
 </body>
 
 </html>

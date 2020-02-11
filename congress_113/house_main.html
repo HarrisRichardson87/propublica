@@ -42,7 +42,7 @@
               113 Congress
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="./senate.html">Senate</a>
+              <a class="dropdown-item" href="./senate_main.html">Senate</a>
               <a class="dropdown-item active" href="#">House</a>
             </div>
           </div>
@@ -52,8 +52,8 @@
               Attendence
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="../attendence/senate.html">Senate</a>
-              <a class="dropdown-item" href="../attendence/house.html">House</a>
+              <a class="dropdown-item" href="../attendence/senate_attendence.html">Senate</a>
+              <a class="dropdown-item" href="../attendence/house_attendence.html">House</a>
             </div>
           </div>
           <div class="dropdown">
@@ -62,8 +62,8 @@
               Loyalty
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="../loyalty/senate.html">Senate</a>
-              <a class="dropdown-item" href="../loyalty/house.html">House</a>
+              <a class="dropdown-item" href="../loyalty/senate_loyalty.html">Senate</a>
+              <a class="dropdown-item" href="../loyalty/house_loyalty.html">House</a>
             </div>
           </div>
 
@@ -76,7 +76,7 @@
   <!-- CONTENT -->
 
 
-  <div class="jumbotron">
+  <div class="jumbotron" id="app">
     <h1>House Data</h1>
     <p>The major power of the House is to pass federal legislation that affects the entire country, although its
       bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law
@@ -89,34 +89,36 @@
     </p>
     <div id="center" class="checkbox text-center">
       <label for="democrat">
-        <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="checker(data)" />
+        <input class='radio_check' id="democrat" type="checkbox" value="Democrat" onclick="app.check(data)" />
         Democrats
       </label>
       <label for="republican">
-        <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="checker(data)" />
+        <input class='radio_check' id="republican" type="checkbox" value="Republican" onclick="app.check(data)" />
         Republicans
       </label>
       <label for="independent">
         <input display="none" class='radio_check' id="independent" type="checkbox" value="Independent"
-          onclick="checker(data)" />
+          onclick="app.check(data)" />
         Independents
       </label>
 
     </div>
 
-    <select id="state_select" class='form-control' onchange="checker(data)"></select>
+    <select id="state_select"  class='form-control' onchange="app.check(data)">
+      <option v-for= 'item in stater'>{{ item }}</option>
+   </select>
     
-
-    <table class="table-striped table-light table-bordered table-hover" id="two" >
+    <table class="table-striped table-light table-bordered table-hover" >
+      <div id="spinner"></div> 
+      <thead>
       <th>Name</th>
       <th>Party</th>
       <th>State</th>
       <th>Seniority</th>
       <th>Party Line Votes</th>
-
       </thead>
       <tbody>
-          <tr v-for="(item, index) in rowDataTwo">
+          <tr v-for="item in rowDataTwo">
               <th scope="row">{{ item.first_name }} {{item.last_name}}</th>
               <td>{{ item.party}} </td>
               <td>{{ item.state }}</td>
@@ -133,12 +135,6 @@
   <table class="table table-striped table-bordered table-sm table-hover" id="senate-data"></table>
 
   </div>
-
-
-
-
-
-
   <!-- Footer -->
   <footer class="page-footer font-small white shadow-sm">
     <div class="footer-copyright text-center py-1">
@@ -153,7 +149,7 @@
       <!--Instagram-->
       <a class="li-ic">
         <i>
-          <a href="mailto: harris.richardson87@gmail.com"><img src="./images/email-marketing.png" height="40">Website
+          <a href="mailto: harris.richardson87@gmail.com"><img src="../images/email-marketing.png" height="40">Website
             Designed by Harris Richardson</a>
         </i>
       </a>
