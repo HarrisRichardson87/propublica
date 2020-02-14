@@ -110,7 +110,9 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 button {
     /* background-color: Transparent !important; */
-    opacity: 70% !important;
+    /* opacity: 70% !important; */
+    /* background-color: black; */
+ 
 }
 #spinner{
     visibility: hidden;
@@ -141,4 +143,14 @@ button {
   
   #spinner.show {
     visibility: visible;
+  }
+
+  .row{
+      padding-top: 20px;
+  }
+
+  .dropdown{
+      background-color: transparent;
+      color:white;
+      padding: 10px;
   }

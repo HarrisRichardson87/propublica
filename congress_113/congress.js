@@ -10,8 +10,7 @@ var app = new Vue({
     stater:[],
     sortBox:[],
     stateBox:[]
-
-  },
+},
   methods: {
 
     //Main Fetch and Initial Array//
