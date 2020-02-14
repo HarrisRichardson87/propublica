@@ -64,8 +64,8 @@ var app = new Vue({
       let length = stacker.length * .1
       app.revSortedStack = app.sortedStack.slice(Math.max(app.sortedStack.length - length, 0))
       app.sortedStack = app.sortedStack.slice(0, length);
-      app.bestAttendence = app.revSortedStack.reverse()
-      app.worstAttendence = app.sortedStack
+      app.worstAttendence = app.revSortedStack.reverse()
+      app.bestAttendence = app.sortedStack
     },
     
     //At a Glance//
